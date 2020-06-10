@@ -3,7 +3,6 @@
 IMPORTANT:
 To make this work you need to configure your AWS-CLI with the correct permissions.
 By: Alan Muniz
-v: 1.0.1
 
 ```
 This script consult all the URL for domains that are contained in the $route,
