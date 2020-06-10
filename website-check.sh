@@ -55,15 +55,15 @@ do
 ###
         bash $iam/jsongenerator.sh $instance_id $url $STATUS "$date" $timestamp
         sleep 5        
-        aws cloudwatch put-metric-data --metric-name HTTP-Code --value 100 --namespace "SiteStatus" --dimensions InstanceId="$instance_id"
+        aws cloudwatch put-metric-data --metric-name NAME --value 100 --namespace "NAME" --dimensions InstanceId="$instance_id"
 	      #aws cloudwatch put-metric-data --namespace "SiteStatus" --metric-data file://$iam/metricsOutput.json        
 ###
 # This sends the message to logstream on Cloudwatch
 ### 
         sleep 5
-        aws logs create-log-stream --log-group-name "/aws/cloudwatch/WebsiteStatusMessage" --log-stream-name $timestamp
+        aws logs create-log-stream --log-group-name "/aws/cloudwatch/Logs" --log-stream-name $timestamp
         sleep 5
-        aws logs put-log-events --log-group-name "/aws/cloudwatch/WebsiteStatusMessage" --log-stream-name "$timestamp" --log-events file://$iam/logsoutput.json
+        aws logs put-log-events --log-group-name "/aws/cloudwatch/Logs" --log-stream-name "$timestamp" --log-events file://$iam/logsoutput.json
     fi
 done 
 
